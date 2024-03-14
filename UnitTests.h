@@ -6,11 +6,11 @@ namespace UNITTESTS {
 
     void runTests(); // Example function declaration
 
-    class MyClass {
-        // Example class declaration
-    };
+    // class MyClass {
+    //     // Example class declaration
+    // };
 
-    int myVariable; // Example variable declaration
+    // int myVariable; // Example variable declaration
 }
 
 #endif // UNITTESTS_H
