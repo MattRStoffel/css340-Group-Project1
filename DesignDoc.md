@@ -1,12 +1,51 @@
-Design Doc 
-Coding Conventions:
+# Design Doc 
+
+##### Coding Conventions:
+
     K&R indentation style
     - opening brace at the next line on the same indentation level as its header, the statements within the braces are indented, and the closing brace at the end is on the same indentation level as the header of the function at a line of its own
-    
-Functions: Inputs and Outputs
 
-Pseudo-Code:
+##### Functions: Inputs and Outputs
 
-Time-Complexity Analysis: 
+**Normal Distribution:** 
+    Parameters: # of integers to generate, user specified mean, user specified standard deviation
+    Output: 
 
-Data Structures, etc: 
+**Uniform Distribution:** 
+    Parameters: # of floating-point integers to generate, user specified range
+    Output:
+
+**Almost Generic QuickSort Algorithm:**
+    Parameters:
+    Output:
+
+**Almost Generic Find k-th ranked object Algorithm:**
+    Parameters:
+    Output:
+
+##### Pseudo-Code:
+
+**Normal Distribution:**
+
+
+**Uniform Distribution:**
+
+
+**Almost Generic QuickSort Algorithm:**
+
+**Almost Generic Find k-th ranked object Algorithm:**
+
+
+##### Time-Complexity Analysis: 
+
+**Normal Distribution:**
+
+
+**Uniform Distribution:**
+
+
+**Almost Generic QuickSort Algorithm:**
+
+**Almost Generic Find k-th ranked object Algorithm:**
+
+##### Data Structures, etc: 
