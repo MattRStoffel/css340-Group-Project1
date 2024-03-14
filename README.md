@@ -1,5 +1,4 @@
-# css340-Group-Project1
-Deliverables:
+# Deliverables:
 
 - [ ] A design-doc that describes the problem-solving process for all the above problems. For each problem, include the following aspects: 
     - [ ] input and output of the problem
