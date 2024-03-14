@@ -1,5 +1,3 @@
 *.o
 main
 !main.cpp
-.vscode
-*.json
