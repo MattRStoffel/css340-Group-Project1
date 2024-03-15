@@ -1,7 +1,6 @@
 #include "UnitTests.h"
-// #include "Sorting.h"
-// #include "RandomGenerators.h"
-// #include <iostream>
+#include "Sorting.h"
+#include "RandomGenerators.h"
 
 int main() {
     UNITTESTS::runTests();
