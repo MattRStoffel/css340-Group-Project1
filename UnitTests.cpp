@@ -1,4 +1,6 @@
 #include "UnitTests.h"
+#include "Statistics.h"
+#include "RandomGenerators.h"
 
 #include <iostream>
 
@@ -144,7 +146,9 @@ namespace UNITTESTS {
 
     // Problem 1: Generating Histogram for Randomly Generated Integer Numbers
     bool test_generateRandomIntegers_1() {
-        return false;
+        std::vector<int> testData;
+        testData = RandomGenerators::generateRandomNormalDistInts(20000, 0, 1);
+        return Statistics::isApproximatelyNormal(testData);
     }
 
     bool test_generateRandomIntegers_2() {
