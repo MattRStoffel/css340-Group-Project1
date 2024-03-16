@@ -27,6 +27,12 @@
 
 **Normal Distribution:**
 
+1. generate n random integers following a normal distribution, where n is the total count of integers to be produced 
+   - use random generator and normal_distribution library 
+   - O(n) 
+   - mean and standard deviation are user-specified
+2. generate a histogram with the data (TODO)
+
 
 **Uniform Distribution:**
 
