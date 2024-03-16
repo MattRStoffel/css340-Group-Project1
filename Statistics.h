@@ -8,6 +8,12 @@
 
 namespace Statistics {
 
+    //function to check if a value is numerical
+    template<typename T>
+    constexpr bool is_numerical() {
+        return std::is_arithmetic<T>::value;
+    }
+
     //function checks validity of input data
     template<typename T>
     void validVectorDataCheck(const std::vector<T>& data) {
@@ -21,11 +27,6 @@ namespace Statistics {
 
     }
 
-    //function to check if a value is numerical
-    template<typename T>
-    constexpr bool is_numerical() {
-        return std::is_arithmetic<T>::value;
-    }
 
     //function calculates the mean of a collection of vector elements
     template<typename T>
