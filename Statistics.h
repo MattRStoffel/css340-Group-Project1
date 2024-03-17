@@ -1,4 +1,5 @@
 //templates are defined in the header file
+//assisted by ChatGPT 4.0
 #ifndef STATISTICS_H
 #define STATISTICS_H
 
@@ -27,7 +28,6 @@ namespace Statistics {
 
     }
 
-
     //function calculates the mean of a collection of vector elements
     template<typename T>
     double calculateMean(const std::vector<T>& data) {
@@ -49,7 +49,6 @@ namespace Statistics {
         }
     }
 
-
     //function calculates if a collection of vector elements is approx. normal
     //determined by comparing the mean and median.
     //if the two values are approx. equivalent (within specified) threshold,
@@ -60,6 +59,30 @@ namespace Statistics {
         double mean = calculateMean(data);
         double median = calculateMedian(data);
         return std::abs(mean - median) < allowableDifference;
+    }
+
+    //function calculates if a collection of vector elements is approx. uniform
+    //determined by checking if the mean and median are roughly the same value as the midpoint of the range
+    //if the two values are approximately equivalent (within specified) threshold,
+    //the distribution is considered uniform
+    template<typename T>
+    bool isApproximatelyUniform(const std::vector<T>& data, double allowableDifference = 0.5) {
+        validVectorDataCheck(data);
+
+        auto lowerBound = *std::min_element(data.begin(), data.end());
+        auto upperBound = *std::max_element(data.begin(), data.end());
+
+        T rangeMidPoint = (upperBound + lowerBound) / 2;
+        double mean = calculateMean(data);
+        double median = calculateMedian(data);
+
+        // Check if the absolute difference between mean and rangeMidPoint is within allowableDifference
+        bool meanCheck = std::abs(mean - rangeMidPoint) < allowableDifference;
+        // Check if the absolute difference between median and rangeMidPoint is within allowableDifference
+        bool medianCheck = std::abs(median - rangeMidPoint) < allowableDifference;
+
+        // Return true if both checks pass
+        return meanCheck && medianCheck;
     }
 
 }

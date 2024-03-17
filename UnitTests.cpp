@@ -1,3 +1,4 @@
+//assisted by ChatGPT 4.0
 #include "UnitTests.h"
 #include "Statistics.h"
 #include "RandomGenerators.h"
@@ -185,7 +186,9 @@ namespace UNITTESTS {
 
     // Problem 2: Generating Histogram for Randomly Generated Floating-Point Numbers
     bool test_generateRandomFloats_1() {
-        return false;
+        std::vector<float> testData;
+        testData = RandomGenerators::generateRandomUniformDistFloats(20000, 10, 100);
+        return Statistics::isApproximatelyUniform(testData);
     }
 
     bool test_generateRandomFloats_2() {
