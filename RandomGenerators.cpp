@@ -1,31 +1,25 @@
 #include "RandomGenerators.h"
-#include <random>
-#include <iostream>
 
 namespace RandomGenerators {
 
-    // Implement your functions or classes here
-
-    // Function to create random set of integers based on the Normal distribution
-    // returns vector of random integers based that fit a normal distribution
-    // using a vector instead of an array to avoid passing array pointer as a parameter (arrays can't be returned directly in c++)
-    std::vector<int> generateRandomNormalDistInts(int count, double mean, double std_dev) {
-
-        if(count < 1 || std_dev <= 0) {
-            std::cerr << "count must be greater than 1 and standard deviation must be greater than 0" << std::endl;
+    // Function generates a random set of integers based on the Normal distribution
+    // returns vector of random integers that fit a normal distribution
+    std::vector<int> generateRandomNormalDistInts(int numCount, double mean, double std_dev) {
+        if (std_dev <= 0) {
+            throw std::invalid_argument("standard deviation must be greater than 0");
         }
 
-        std::default_random_engine rd;
-        std::mt19937 generator(rd());
-        std::normal_distribution<> dist(mean, std_dev);
+        return generateRandomNumbers<int>(numCount, std::normal_distribution<>(mean, std_dev));
+    }
 
-        std::vector<int> numbers(count);
-
-        for (int n = 0; n < count; n++) {
-            numbers[n] = static_cast<int>(dist(generator));
+    // Function generates a random set of floats based on the Uniform distribution
+    // returns vector of random floats that fit a normal distribution
+    std::vector<float> generateRandomUniformDistFloats(int numCount, float lowerBound, float upperBound) {
+        if (lowerBound >= upperBound) {
+            throw std::invalid_argument("lowerBound must be less than upperBound");
         }
 
-        return numbers;
+        return generateRandomNumbers<float>(numCount, std::uniform_real_distribution<>(lowerBound, upperBound));
     }
 
 } // namespace RandomGenerators
