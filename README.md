@@ -7,7 +7,7 @@
     - [ ] your choice of data structures with a brief justification in the final coding stage (e.g., "We declared a user-defined struct for ... because ...")
 - [ ] Your program files.  one for each problem.  Each program file will consist of the following information:
     - [ ] A header file: 
-        - [ ] the function prototype to generate  x uniformly distributed random numbers 
+        - [X] the function prototype to generate x uniformly distributed random numbers 
         - [X] the function prototype to generate x random numbers following a specified normal distribution
         - [ ] the function prototype to calculate the underlying data of a histogram, given a collection of numbers
         - [ ] the function prototype to print out a histogram using a user-specified symbol (e.g., *)
