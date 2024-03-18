@@ -1,7 +1,7 @@
 # Deliverables:
 
 - [ ] A design-doc that describes the problem-solving process for all the above problems. For each problem, include the following aspects: 
-    - [ ] input and output of the problem
+    - [X] input and output of the problem
     - [ ] your algorithm in pseudo code with comments
     - [ ] worst-case time complexity analysis
     - [ ] your choice of data structures with a brief justification in the final coding stage (e.g., "We declared a user-defined struct for ... because ...")

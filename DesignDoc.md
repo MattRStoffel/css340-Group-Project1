@@ -9,56 +9,72 @@
 
 **Normal Distribution:** 
     Parameters: # of integers to generate, user specified mean, user specified standard deviation
-    Output: 
-    
+    Output: A histogram containing randomly generated integers in a normal ditrobution
 
 **Uniform Distribution:** 
-    Parameters: # of floating-point integers to generate, user specified range
-    Output:
+    Parameters: # of floating-point numbers to generate, user specified range
+    Output: A histogram containing randomly generated floating-point in a uniform ditrobution
 
 **Almost Generic QuickSort Algorithm:**
-    Parameters:
-    Output:
+    Parameters: An iterable collection of objects, a comparison function
+    Output: The same collection sorted according to the comparison function
 
 **Almost Generic Find k-th ranked object Algorithm:**
-    Parameters:
-    Output:
+    Parameters: An iterable collection of objects, user defined k, a comparison function
+    Output: kth item that, if collection were sorted would be at index k of the collection
 
 ### Pseudo-Code:
 
 **Normal Distribution:**
-
 1. generate n random integers following a normal distribution, where n is the total count of integers to be produced 
    - use random generator and normal_distribution in std library 
    - O(n) 
    - mean and standard deviation are user-specified
 2. generate a histogram with the data (TODO)
 
-
 **Uniform Distribution:**
-
 1. generate n random integers following a uniform distribution, where n is the total count of integers to be produced
     - use random generator and uniform_distribution in std library
     - O(n)
     - range is user-specified
 2. generate a histogram with the data (TODO)
 
+
 **Almost Generic QuickSort Algorithm:**
 
+quicksort
+1. If the low index is less than the high index:
+    - Find the pivot index by calling the partition function.
+    - Recursively call quickSort on the subarray before the pivot index.
+    - Recursively call quickSort on the subarray after the pivot index.
+
+partition
+1. Set the pivot element as the last element of the array.
+2. Initialize a variable i as (low - 1).
+3. Iterate from j = low to high - 1:
+    - If the element at index j is less than or equal to the pivot element:
+        - Increment i.
+        - Swap the elements at indices i and j.
+4. Swap the pivot element with the element at index (i + 1).
+5. Return the index of the pivot element.
+
 **Almost Generic Find k-th ranked object Algorithm:**
+
 
 
 ### Time-Complexity Analysis:
 
 **Normal Distribution:**
-
+O(n) - where n is the number of items in the normal distrobution
 
 **Uniform Distribution:**
-
+O(n) - where n is the number of itmes in the uniform distrobution
 
 **Almost Generic QuickSort Algorithm:**
 
+
 **Almost Generic Find k-th ranked object Algorithm:**
+
 
 ### Data Structures, etc:
 
