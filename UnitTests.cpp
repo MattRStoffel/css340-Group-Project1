@@ -3,9 +3,6 @@
 #include "Statistics.h"
 #include "RandomGenerators.h"
 
-#include <iostream>
-
-
 namespace UNITTESTS {
     // Implement your functions, classes, and variables here
 

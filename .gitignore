@@ -3,6 +3,8 @@
 *.vscode*
 *build*
 CMakeFiles
+!CMakeLists.txt
+Makefile
 Testing
 main.dSYM/Contents
 *.tcl

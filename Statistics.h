@@ -87,6 +87,6 @@ namespace Statistics {
         return meanCheck && medianCheck;
     }
 
-}
+} // namespace Statistics
 
 #endif // STATISTICS_H

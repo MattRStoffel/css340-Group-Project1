@@ -1,6 +1,8 @@
 #ifndef UNITTESTS_H
 #define UNITTESTS_H
 
+#include <iostream>
+
 namespace UNITTESTS {
     // Declare your functions, classes, and variables here
 

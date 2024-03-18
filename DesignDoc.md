@@ -10,6 +10,7 @@
 **Normal Distribution:** 
     Parameters: # of integers to generate, user specified mean, user specified standard deviation
     Output: 
+    
 
 **Uniform Distribution:** 
     Parameters: # of floating-point integers to generate, user specified range
