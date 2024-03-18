@@ -32,7 +32,6 @@ namespace UNITTESTS {
     bool test_quickSort_1();
     bool test_quickSort_2();
     bool test_quickSort_3();
-    
 }
 
 #endif // UNITTESTS_H
