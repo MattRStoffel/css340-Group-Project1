@@ -6,6 +6,8 @@
 #include <vector>
 #include <numeric>
 #include <iostream>
+#include <stdexcept>
+#include <algorithm>
 
 namespace Statistics {
 

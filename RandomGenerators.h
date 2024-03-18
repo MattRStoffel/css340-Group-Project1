@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <random>
+#include <stdexcept>
 
 namespace RandomGenerators {
 
