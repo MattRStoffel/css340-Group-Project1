@@ -22,4 +22,25 @@ namespace RandomGenerators {
         return generateRandomNumbers<float>(numCount, std::uniform_real_distribution<>(lowerBound, upperBound));
     }
 
+    template<typename Number, typename Distribution>
+    std::vector<Number> generateRandomNumbers(int numCount, Distribution dist) {
+
+        if (numCount < 1) {
+            throw std::invalid_argument("numCount must be greater than 0");
+        }
+
+        std::random_device rd;
+        std::mt19937 generator(rd());
+
+        std::vector<Number> randomNumbers(numCount);
+
+        for (int n = 0; n < numCount; n++) {
+            randomNumbers[n] = static_cast<Number>(dist(generator));
+        }
+
+        return randomNumbers;
+    }
+
+ 
+
 } // namespace RandomGenerators

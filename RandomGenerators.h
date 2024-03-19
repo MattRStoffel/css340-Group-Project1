@@ -4,6 +4,9 @@
 #include <vector>
 #include <random>
 #include <stdexcept>
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
 
 namespace RandomGenerators {
 
@@ -18,22 +21,43 @@ namespace RandomGenerators {
     //templated function to generate a vector of random number
     //used as return value for distribution generation functions
     template<typename Number, typename Distribution>
-    std::vector<Number> generateRandomNumbers(int numCount, Distribution dist) {
-
-        if (numCount < 1) {
-            throw std::invalid_argument("numCount must be greater than 0");
+    std::vector<Number> generateRandomNumbers(int numCount, Distribution dist);
+    
+   template<typename T>
+    void histogram(std::ostream& os, const std::vector<T>& v, int width, int bins) {
+        if (bins < 1) {
+            throw std::invalid_argument("bins must be greater than 0");
         }
 
-        std::random_device rd;
-        std::mt19937 generator(rd());
-
-        std::vector<Number> randomNumbers(numCount);
-
-        for (int n = 0; n < numCount; n++) {
-            randomNumbers[n] = static_cast<Number>(dist(generator));
+        if (width < 1) {
+            throw std::invalid_argument("width must be greater than 0");
         }
 
-        return randomNumbers;
+        if (v.empty()) {
+            throw std::invalid_argument("vector must not be empty");
+        }
+
+        auto minmax = std::minmax_element(v.begin(), v.end());
+        auto min = *minmax.first;
+        auto max = *minmax.second;
+
+        auto binWidth = (max - min) / bins;
+
+        std::vector<int> histogram(bins, 0);
+
+        for (auto& value : v) {
+            int bin = (value - min) / binWidth;
+            if (bin == bins) {
+                bin--;
+            }
+            histogram[bin]++;
+        }
+
+        for (int i = 0; i < bins; i++) {
+            os << std::setw(width) << min + i * binWidth << " - " << std::setw(width) << min + (i + 1) * binWidth << " | ";
+            os << std::string(histogram[i], '*') << std::endl;
+        }
+    
     }
 
 }

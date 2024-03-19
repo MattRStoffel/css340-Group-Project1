@@ -173,6 +173,9 @@ namespace UNITTESTS {
     }
 
     bool test_printHistogram_1() {
+        std::vector<int> testData;
+        testData = RandomGenerators::generateRandomNormalDistInts(1000, 10, 1000);
+        RandomGenerators::histogram(std::cout, testData, 8, 30);
         return false;
     }
 
