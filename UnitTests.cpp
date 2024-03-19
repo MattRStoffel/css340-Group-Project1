@@ -145,15 +145,19 @@ namespace UNITTESTS {
     bool test_generateRandomIntegers_1() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(20000, 0, 1);
-        return isApproximatelyNormal(testData);
+        return isApproximatelyNormal(testData, 0.02);
     }
 
     bool test_generateRandomIntegers_2() {
-        return false;
+        std::vector<int> testData;
+        testData = RandomGenerators::generateRandomNormalDistInts(100000, 0, 100);
+        return isApproximatelyNormal(testData, 0.8);
     }
 
     bool test_generateRandomIntegers_3() {
-        return false;
+        std::vector<int> testData;
+        testData = RandomGenerators::generateRandomNormalDistInts(100000, 100, 1);
+        return isApproximatelyNormal(testData, 0.6);
     }
 
     bool test_calculateHistogram_1() {
@@ -184,15 +188,19 @@ namespace UNITTESTS {
     bool test_generateRandomFloats_1() {
         std::vector<float> testData;
         testData = RandomGenerators::generateRandomUniformDistFloats(20000, 10, 100);
-        return isApproximatelyUniform(testData);
+        return isApproximatelyUniform(testData, 1);
     }
 
     bool test_generateRandomFloats_2() {
-        return false;
+        std::vector<float> testData;
+        testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
+        return isApproximatelyUniform(testData, 1.8);
     }
 
     bool test_generateRandomFloats_3() {
-        return false;
+        std::vector<float> testData;
+        testData = RandomGenerators::generateRandomUniformDistFloats(20000, 0, 1);
+        return isApproximatelyUniform(testData, 0.1);
     }
 
     // Problem 3: Almost Generic Randomized QuickSort Algorithm

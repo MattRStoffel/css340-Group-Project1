@@ -56,7 +56,7 @@ namespace UNITTESTS {
     double calculateMedian(std::vector<T> data);
 
     template<typename T>
-    bool isApproximatelyNormal(const std::vector<T>& data, double allowableDifference = 1e-2);
+    bool isApproximatelyNormal(const std::vector<T>& data, double allowableDifference = 0.01);
 
     template<typename T>
     bool isApproximatelyUniform(const std::vector<T>& data, double allowableDifference = 0.5);
