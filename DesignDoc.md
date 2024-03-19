@@ -2,7 +2,7 @@
 
 ### Coding Conventions:
 
-    K&R indentation style
+    One True Brace indentation style
     - opening brace at the next line on the same indentation level as its header, the statements within the braces are indented, and the closing brace at the end is on the same indentation level as the header of the function at a line of its own
 
 ### Functions: Inputs and Outputs
@@ -16,11 +16,11 @@
     Output: A histogram containing randomly generated floating-point in a uniform ditrobution
 
 **Almost Generic QuickSort Algorithm:**
-    Parameters: An iterable collection of objects, a comparison function
+    Parameters: An iterable collection of objects, first index, last index, a comparison function
     Output: The same collection sorted according to the comparison function
 
 **Almost Generic Find k-th ranked object Algorithm:**
-    Parameters: An iterable collection of objects, user defined k, a comparison function
+    Parameters: An iterable collection of objects, first index, last index, user defined k, a comparison function
     Output: kth item that, if collection were sorted would be at index k of the collection
 
 ### Pseudo-Code:
@@ -60,7 +60,14 @@ partition
 
 **Almost Generic Find k-th ranked object Algorithm:**
 
-
+quickselect
+1. Find the partition index from partitioning (same function as quicksort) the current array range
+2. If the partition index equals k
+    - Return partition index
+3. Else if partition index is less than k
+    - Return quickselect the left range
+4. Else if partition index is greater than k
+    - Return quickselect the right subarray
 
 ### Time-Complexity Analysis:
 
@@ -71,10 +78,10 @@ O(n) - where n is the number of items in the normal distrobution
 O(n) - where n is the number of itmes in the uniform distrobution
 
 **Almost Generic QuickSort Algorithm:**
-
+O(n log(n)) - where n is the size of the array to be sorted
 
 **Almost Generic Find k-th ranked object Algorithm:**
-
+O(n log(n)) - where n is the size of the array to be searched
 
 ### Data Structures, etc:
 
