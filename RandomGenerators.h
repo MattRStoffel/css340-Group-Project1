@@ -23,42 +23,8 @@ namespace RandomGenerators {
     template<typename Number, typename Distribution>
     std::vector<Number> generateRandomNumbers(int numCount, Distribution dist);
     
-   template<typename T>
-    void histogram(std::ostream& os, const std::vector<T>& v, int width, int bins) {
-        if (bins < 1) {
-            throw std::invalid_argument("bins must be greater than 0");
-        }
-
-        if (width < 1) {
-            throw std::invalid_argument("width must be greater than 0");
-        }
-
-        if (v.empty()) {
-            throw std::invalid_argument("vector must not be empty");
-        }
-
-        auto minmax = std::minmax_element(v.begin(), v.end());
-        auto min = *minmax.first;
-        auto max = *minmax.second;
-
-        auto binWidth = (max - min) / bins;
-
-        std::vector<int> histogram(bins, 0);
-
-        for (auto& value : v) {
-            int bin = (value - min) / binWidth;
-            if (bin == bins) {
-                bin--;
-            }
-            histogram[bin]++;
-        }
-
-        for (int i = 0; i < bins; i++) {
-            os << std::setw(width) << min + i * binWidth << " - " << std::setw(width) << min + (i + 1) * binWidth << " | ";
-            os << std::string(histogram[i], '*') << std::endl;
-        }
-    
-    }
+    template<typename T>
+    void histogram(std::ostream& os, const std::vector<T>& v, int ubins = 0, int binWidth = 0);
 
 }
 
