@@ -1,5 +1,7 @@
 #ifndef SORTING_H
 #define SORTING_H
+#include <iostream>
+#include <vector>
 
 namespace MySortingLibrary {
 

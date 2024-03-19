@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Sorting.h"
 
 namespace MySortingLibrary {
