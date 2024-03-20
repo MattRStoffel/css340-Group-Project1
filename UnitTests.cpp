@@ -204,13 +204,6 @@ namespace UNITTESTS {
         return histogram == expected;
     }
 
-    std::string removeWhitespace(const std::string& str) {
-        std::string result;
-        std::copy_if(str.begin(), str.end(), std::back_inserter(result), 
-            [](char c){ return !std::isspace(c); });
-        return result;
-    }
-
     bool test_printHistogram_1() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
@@ -306,8 +299,16 @@ namespace UNITTESTS {
         int expected = 1;
         return false; // MySortingLibrary::testQuickSelect(input, 1, expected);
     }
+    
 
-        //function to check if a value is numerical
+    std::string removeWhitespace(const std::string& str) {
+        std::string result;
+        std::copy_if(str.begin(), str.end(), std::back_inserter(result), 
+            [](char c){ return !std::isspace(c); });
+        return result;
+    }
+
+    //function to check if a value is numerical
     template<typename T>
     constexpr bool is_numerical() {
         return std::is_arithmetic<T>::value;
