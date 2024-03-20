@@ -32,7 +32,7 @@ namespace MySortingLibrary {
     template<typename T, typename Func>
     void QuickSort(std::vector<T>& input, int low, int high, Func compare) {
         // If the lower value is greater than the upper value, it is sorted
-        if (low < high) {
+        if (compare(low, high)) {
 
             // Setting the pivot
             int pivot = partitionQuickSort(input, low, high, compare);
@@ -76,7 +76,8 @@ namespace MySortingLibrary {
 
     template<typename T>
     bool testQuickSort(std::vector<T> input, std::vector<T> expected) {
-        QuickSort(input);
+        //write a lambda function to compare the two values
+        QuickSort(input, [](T x, T y) { return x < y; });
         if (input == expected) {
             return true;
         } else {
