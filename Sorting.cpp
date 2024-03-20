@@ -1,36 +1,58 @@
+// Assisted by ChatGPT 4.0
 #include "Sorting.h"
 
 namespace MySortingLibrary {
 
-    template<typename RandomAccessIterator, typename Compare>
-    void quickSort(RandomAccessIterator first, RandomAccessIterator last, Compare comp) {
-        if (distance(first, last) <= 1) return; // Base case: 0 or 1 element
+    // Declaration for object types for linker to identify within the library
+    template bool MySortingLibrary::testQuickSort<float>(std::vector<float>, std::vector<float>);
+    template bool MySortingLibrary::testQuickSort<int>(std::vector<int>, std::vector<int>);
 
-        // Partition the array
-        RandomAccessIterator pivot = partitionQuickSort(first, last, comp);
+    // Partition Function for Quick Sort
+    template<typename T, typename Func>
+    int partitionQuickSort(std::vector<T>& input, int low, int high, Func compare) {
+        // Set new pivot to the highest index in the vector
+        T pivot = input[high];
 
-        // Recursively apply quicksort to the partitions
-        quickSort(first, pivot, comp); // Sort the lower part
-        quickSort(std::next(pivot), last, comp); // Sort the upper part
-    }
-
-    template<typename RandomAccessIterator, typename Compare>
-    RandomAccessIterator partitionQuickSort(RandomAccessIterator first, RandomAccessIterator last, Compare comp) {
-        auto pivot = std::prev(last);
-        auto i = first;
-        for (auto j = first; j != pivot; j++) {
-            if (comp(*j, *pivot)) {
-                std::swap(*i, *j);
-                i++;
+        int i = low;
+        // Iterate through while j is lower than high
+        for (int j = low; j < high; ++j) {
+            // Using generic comparison, check if the value at index j is less than the value at index i
+            if (compare(input[j], pivot)) {
+                // Swap the 2 values and increment i by 1 as the new low
+                std::swap(input[i], input[j]);
+                ++i;
             }
         }
-        std::swap(*i, *pivot);
+        // Swap the value at i with the value at the high index
+        std::swap(input[i], input[high]);
+        // return i as that is where the new pivot is
         return i;
+    }
+
+    template<typename T, typename Func>
+    void QuickSort(std::vector<T>& input, int low, int high, Func compare) {
+        // If the lower value is greater than the upper value, it is sorted
+        if (low < high) {
+
+            // Setting the pivot
+            int pivot = partitionQuickSort(input, low, high, compare);
+
+            QuickSort(input, low, pivot - 1, compare); // Sort the low up to the pivot
+            QuickSort(input, pivot + 1, high, compare); // Sort from the pivot to the high
+        }
+    }
+
+    // Helper function to initialize function
+    template<typename T, typename Func = std::less<T>>
+    void QuickSort(std::vector<T>& input, Func compare = Func{}) {
+        if (!input.empty()) {
+            QuickSort(input, 0, input.size() - 1, compare);
+        }
     }
 
     template<typename T>
     bool testQuickSort(std::vector<T> input, std::vector<T> expected) {
-        quickSort(input.begin(), input.end(), std::less<T>{});
+        QuickSort(input);
         if (input == expected) {
             return true;
         } else {
@@ -42,22 +64,4 @@ namespace MySortingLibrary {
         }
     }
 
-    template<typename Number>
-    void partition(Number arr[], int low, int high) {
-        Number pivot = arr[high];
-        int i = low - 1;
-        for (int j = low; j <= high - 1; j++) {
-            if (arr[j] < pivot) {
-                i++;
-                swap(arr[i], arr[j]);
-            }
-        }
-    }
-
-    template<typename Number>
-    void swap(Number& a, Number& b) {
-        Number temp = *a;
-        *a = *b;
-        *b = temp;
-    }
-} // namespace MySortingLibrary
+}

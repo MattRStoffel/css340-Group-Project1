@@ -1,6 +1,7 @@
 //assisted by ChatGPT 4.0
 #include "UnitTests.h"
 #include "RandomGenerators.h"
+#include "Sorting.h"
 
 namespace UNITTESTS {
     // Implement your functions, classes, and variables here
@@ -217,15 +218,22 @@ namespace UNITTESTS {
     }
 
     bool test_quickSort_1() {
-        return false;
+        std::vector<float> input = {3,2,1,0};
+        std::vector<float> expected = {0,1,2,3};
+        return MySortingLibrary::testQuickSort(input, expected);
     }
 
     bool test_quickSort_2() {
-        return false;
+        std::vector<int> input = {5, 5, 4, 2, 2};
+        std::vector<int> expected = {2, 2, 4, 5, 5};
+        return MySortingLibrary::testQuickSort(input, expected);
     }
 
     bool test_quickSort_3() {
-        return false;
+        std::vector<int> input = {1};
+        std::vector<int> expected = {1};
+        return MySortingLibrary::testQuickSort(input, expected);
+
     }
 
         //function to check if a value is numerical
