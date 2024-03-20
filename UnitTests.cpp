@@ -259,21 +259,24 @@ namespace UNITTESTS {
 
     // Problem 4: Almost Generic Randomized QuickSelect Algorithm
     bool test_quickSelect_1() {
-        std::vector<float> input = {3,2,1,0};
-        std::vector<float> expected = {0,1,2,3};
-        return MySortingLibrary::testQuickSelect(input, expected);
+        std::vector<int> input = {3,2,1,0};
+        int k = 1;
+        int expected = 1;
+        return MySortingLibrary::testQuickSelect(input, 1, expected);
     }
 
     bool test_quickSelect_2() {
-        std::vector<int> input = {5, 5, 4, 2, 2};
-        std::vector<int> expected = {2, 2, 4, 5, 5};
-        return MySortingLibrary::testQuickSort(input, expected);
+        std::vector<int> input = {3,2,1,0};
+        int k = 1;
+        int expected = 1;
+        return MySortingLibrary::testQuickSelect(input, 1, expected);
     }
 
     bool test_quickSelect_3() {
-        std::vector<int> input = {1};
-        std::vector<int> expected = {1};
-        return MySortingLibrary::testQuickSort(input, expected);
+        std::vector<int> input = {3,2,1,0};
+        int k = 1;
+        int expected = 1;
+        return MySortingLibrary::testQuickSelect(input, 1, expected);
     }
 
         //function to check if a value is numerical

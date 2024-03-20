@@ -15,13 +15,13 @@ namespace MySortingLibrary {
     int partitionQuickSort(std::vector<T>& input, int low, int high, Func compare);
 
     template<typename T, typename Func>
-    void QuickSelect(std::vector<T>& input, int low, int high, int k, Func compare);
+    T QuickSelect(std::vector<T>& input, int low, int high, int k, Func compare);
 
     template<typename T>
     bool testQuickSort(std::vector<T> input, std::vector<T> expected);
 
     template<typename T>
-    bool testQuickSelect(std::vector<T> input, std::vector<T> expected);
+    bool testQuickSelect(std::vector<T> input, int k, T expected);
 
 } // namespace MySortingLibrary
 
