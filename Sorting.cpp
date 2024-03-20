@@ -50,6 +50,22 @@ namespace MySortingLibrary {
         }
     }
 
+    template<typename T, typename Func>
+    void QuickSelect(std::vector<T>& input, int low, int high, int k, Func compare) {
+        // If the lower value is greater than the upper value, it is sorted
+        
+        // Setting the pivot
+        int pivot = partitionQuickSort(input, low, high, compare);
+
+        if (pivot == k) {
+            return;
+        } else if (k < pivot) {
+            QuickSelect(input, low, pivot - 1, k, compare);
+        } else {
+            QuickSelect(input, pivot + 1, high, k, compare);
+        }
+    }
+
     template<typename T>
     bool testQuickSort(std::vector<T> input, std::vector<T> expected) {
         QuickSort(input);
@@ -64,4 +80,17 @@ namespace MySortingLibrary {
         }
     }
 
+    template<typename T>
+    bool testQuickSelect(std::vector<T> input, std::vector<T> expected) {
+        QuickSelect(input);
+        if (input == expected) {
+            return true;
+        } else {
+            for (const auto& e : expected) std::cout << e << " ";
+            std::cout << "] Got: [";
+            for (const auto& i : input) std::cout << i << " ";
+            std::cout << "])\n";
+            return false;
+        }
+    }
 }

@@ -43,6 +43,11 @@ namespace UNITTESTS {
     bool test_quickSort_2();
     bool test_quickSort_3();
 
+    // Problem 4: Randomized QuickSelect Algorithm
+    bool test_quickSelect_1();
+    bool test_quickSelect_2();
+    bool test_quickSelect_3();
+
     template<typename T>
     constexpr bool is_numerical();
 

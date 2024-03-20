@@ -138,6 +138,28 @@ namespace UNITTESTS {
             std::cout << "test_quickSort_3 passed" << std::endl;
         }
 
+        // Problem 4: Almost Generic Randomized QuickSelect Algorithm
+        if (!test_quickSelect_1()) {
+            std::cout << "test_quickSelect_1 failed" << std::endl;
+            allTestsPassed = false;
+        } else {
+            std::cout << "test_quickSelect_1 passed" << std::endl;
+        }
+
+        if (!test_quickSelect_2()) {
+            std::cout << "test_quickSelect_2 failed" << std::endl;
+            allTestsPassed = false;
+        } else {
+            std::cout << "test_quickSelect_2 passed" << std::endl;
+        }
+
+        if (!test_quickSelect_3()) {
+            std::cout << "test_quickSelect_3 failed" << std::endl;
+            allTestsPassed = false;
+        } else {
+            std::cout << "test_quickSelect_3 passed" << std::endl;
+        }
+
         return allTestsPassed;
     }
 
@@ -233,7 +255,25 @@ namespace UNITTESTS {
         std::vector<int> input = {1};
         std::vector<int> expected = {1};
         return MySortingLibrary::testQuickSort(input, expected);
+    }
 
+    // Problem 4: Almost Generic Randomized QuickSelect Algorithm
+    bool test_quickSelect_1() {
+        std::vector<float> input = {3,2,1,0};
+        std::vector<float> expected = {0,1,2,3};
+        return MySortingLibrary::testQuickSelect(input, expected);
+    }
+
+    bool test_quickSelect_2() {
+        std::vector<int> input = {5, 5, 4, 2, 2};
+        std::vector<int> expected = {2, 2, 4, 5, 5};
+        return MySortingLibrary::testQuickSort(input, expected);
+    }
+
+    bool test_quickSelect_3() {
+        std::vector<int> input = {1};
+        std::vector<int> expected = {1};
+        return MySortingLibrary::testQuickSort(input, expected);
     }
 
         //function to check if a value is numerical
