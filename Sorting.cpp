@@ -5,7 +5,10 @@ namespace MySortingLibrary {
 
     // Declaration for object types for linker to identify within the library
     template bool MySortingLibrary::testQuickSort<float>(std::vector<float>, std::vector<float>);
+
     template bool MySortingLibrary::testQuickSort<int>(std::vector<int>, std::vector<int>);
+
+    template bool MySortingLibrary::testQuickSelect<int>(std::vector<int>, int, int);
 
     // Partition Function for Quick Sort
     template<typename T, typename Func>
@@ -53,7 +56,13 @@ namespace MySortingLibrary {
     template<typename T, typename Func>
     T QuickSelect(std::vector<T>& input, int low, int high, int k, Func compare) {
         // If the lower value is greater than the upper value, it is sorted
-        
+        if (high < low) {
+            // base case: low and high crossed each other,
+            // so we return a sentinel value or throw exception
+            throw std::runtime_error("Invalid input in QuickSelect function");
+        }
+
+
         // Setting the pivot
         int pivot = partitionQuickSort(input, low, high, compare);
 
@@ -68,9 +77,11 @@ namespace MySortingLibrary {
 
     // Helper function to initialize function
     template<typename T, typename Func = std::less<T>>
-    void QuickSelect(std::vector<T>& input, int k, Func compare = Func{}) {
+    T QuickSelect(std::vector<T>& input, int k, Func compare = Func{}) {
         if (!input.empty()) {
-            QuickSelect(input, 0, input.size() - 1, k, compare);
+            return QuickSelect(input, 0, input.size() - 1, k, compare);
+        } else {
+            throw std::runtime_error("Input array is empty");
         }
     }
 
@@ -81,23 +92,21 @@ namespace MySortingLibrary {
         if (input == expected) {
             return true;
         } else {
-            for (const auto& e : expected) std::cout << e << " ";
+            for (const auto& e: expected) std::cout << e << " ";
             std::cout << "] Got: [";
-            for (const auto& i : input) std::cout << i << " ";
+            for (const auto& i: input) std::cout << i << " ";
             std::cout << "])\n";
             return false;
         }
     }
 
+
     template<typename T>
     bool testQuickSelect(std::vector<T> input, int k, T expected) {
-        if (QuickSelect(input, k) == expected) {
+        T quickSelectOutput = QuickSelect(input, k);
+        if (quickSelectOutput == expected) {
             return true;
         } else {
-            for (const auto& e : expected) std::cout << e << " ";
-            std::cout << "] Got: [";
-            for (const auto& i : input) std::cout << i << " ";
-            std::cout << "])\n";
             return false;
         }
     }
