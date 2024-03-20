@@ -4,6 +4,9 @@
 #include <vector>
 #include <random>
 #include <stdexcept>
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
 
 namespace RandomGenerators {
 
@@ -18,23 +21,10 @@ namespace RandomGenerators {
     //templated function to generate a vector of random number
     //used as return value for distribution generation functions
     template<typename Number, typename Distribution>
-    std::vector<Number> generateRandomNumbers(int numCount, Distribution dist) {
-
-        if (numCount < 1) {
-            throw std::invalid_argument("numCount must be greater than 0");
-        }
-
-        std::random_device rd;
-        std::mt19937 generator(rd());
-
-        std::vector<Number> randomNumbers(numCount);
-
-        for (int n = 0; n < numCount; n++) {
-            randomNumbers[n] = static_cast<Number>(dist(generator));
-        }
-
-        return randomNumbers;
-    }
+    std::vector<Number> generateRandomNumbers(int numCount, Distribution dist);
+    
+    template<typename T>
+    void histogram(std::ostream& os, const std::vector<T>& v, int ubins = 0, int binWidth = 0);
 
 }
 
