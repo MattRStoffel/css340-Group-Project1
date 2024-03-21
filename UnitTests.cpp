@@ -238,13 +238,16 @@ namespace UNITTESTS {
     bool test_generateRandomFloats_1() {
         std::vector<float> testData;
         testData = RandomGenerators::generateRandomUniformDistFloats(20000, 10, 100);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 15, 10, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyUniform(testData, 1);
     }
 
     bool test_generateRandomFloats_2() {
         std::vector<float> testData;
-        testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
-        // std::stringstream ss;
+        // testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
+        // std::stringstream ss;s
         // RandomGenerators::printHistogram(ss, testData, 20, 10, '0');
         // std::cout << ss.str() << std::endl;
         return isApproximatelyUniform(testData, 1.8);
