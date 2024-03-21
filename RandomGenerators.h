@@ -73,7 +73,7 @@ namespace RandomGenerators {
         }
 
         for (int i = 0; i < bins; i++) {
-            os << std::setw(6) << min + i * binWidth << " - " << std::setw(6) << min + (i + 1) * binWidth - 1 << " | ";
+            os << std::setw(8) << min + i * binWidth << " - " << std::setw(8) << min + (i + 1) * binWidth - 1 << " | ";
             os << std::string(histogramVec[i], ch) << std::endl;
         }
     }
