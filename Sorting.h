@@ -5,28 +5,32 @@
 #include <vector>
 #include <iterator>
 #include <utility>
-
+#include <random>
 namespace MySortingLibrary {
 
     // Partition Function for Quick Sort
     template<typename T, typename Func>
     int partitionQuickSort(std::vector<T>& input, int low, int high, Func compare) {
         // Set new pivot to the highest index in the vector
+        std::random_device rd;  // Will be used to obtain a seed for the random number engine
+        std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+        std::uniform_int_distribution<> distrib(low, high);
+        int randomPivot = distrib(gen);
+        std::swap(input[randomPivot], input[high]);
         T pivot = input[high];
 
         int i = low;
-        // Iterate through while j is lower than high
         for (int j = low; j < high; ++j) {
-            // Using generic comparison, check if the value at index j is less than the value at index i
+            // Using the given comparison, check if current element is less than the pivot
             if (compare(input[j], pivot)) {
-                // Swap the 2 values and increment i by 1 as the new low
+                // Swap if the element is less than the pivot
                 std::swap(input[i], input[j]);
-                ++i;
+                i++;
             }
         }
-        // Swap the value at i with the value at the high index
+        // Swap the pivot element to its correct position
         std::swap(input[i], input[high]);
-        // return i as that is where the new pivot is
+        // Return the pivot's final position
         return i;
     }
 
