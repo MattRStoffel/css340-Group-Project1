@@ -172,6 +172,9 @@ namespace UNITTESTS {
     bool test_generateRandomIntegers_2() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(100000, 0, 100);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 100, 10, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyNormal(testData, 0.8);
     }
 
@@ -236,6 +239,9 @@ namespace UNITTESTS {
     bool test_generateRandomFloats_2() {
         std::vector<float> testData;
         testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 20, 10, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyUniform(testData, 1.8);
     }
 
