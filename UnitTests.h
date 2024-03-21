@@ -11,6 +11,8 @@
 #include <stdexcept>
 #include <algorithm>
 
+#include "Sorting.h"
+
 namespace UNITTESTS {
     // Declare your functions, classes, and variables here
 
@@ -66,6 +68,30 @@ namespace UNITTESTS {
     template<typename T>
     bool isApproximatelyUniform(const std::vector<T>& data, double allowableDifference = 0.5);
 
+    template<typename T>
+    bool testQuickSort(std::vector<T> input, std::vector<T> expected) {
+        //write a lambda function to compare the two values
+        MySortingLibrary::QuickSort(input, [](T x, T y) { return x < y; });
+        if (input == expected) {
+            return true;
+        } else {
+            for (const auto& e: expected) std::cout << e << " ";
+            std::cout << "] Got: [";
+            for (const auto& i: input) std::cout << i << " ";
+            std::cout << "])\n";
+            return false;
+        }
+    }
+
+    template<typename T>
+    bool testQuickSelect(std::vector<T> input, int k, T expected) {
+        T quickSelectOutput = MySortingLibrary::QuickSelect(input, k);
+        if (quickSelectOutput == expected) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 } // namespace UNITTESTS
 
