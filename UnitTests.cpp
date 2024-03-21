@@ -205,7 +205,7 @@ namespace UNITTESTS {
     bool test_printHistogram_1() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
-        RandomGenerators::printHistogram(ss, testData, 4, 3);
+        RandomGenerators::printHistogram(ss, testData, 4, 3, '0');
         std::string expected = "1-3|00000000004-6|000007-9|0000000000010-12|";
         return removeWhitespace(ss.str()) == removeWhitespace(expected);
     }
@@ -213,7 +213,7 @@ namespace UNITTESTS {
     bool test_printHistogram_2() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
-        RandomGenerators::printHistogram(ss, testData, 5, 2);
+        RandomGenerators::printHistogram(ss, testData, 5, 2, '0');
         std::string expected = "1-2|00000000003-4|000005-6|7-8|000009-10|000000";
         return removeWhitespace(ss.str()) == removeWhitespace(expected);
     }
@@ -221,7 +221,7 @@ namespace UNITTESTS {
     bool test_printHistogram_3() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
-        RandomGenerators::printHistogram(ss, testData, 5, 3);
+        RandomGenerators::printHistogram(ss, testData, 5, 3, '0');
         std::string expected = "1-3|00000000004-6|000007-9|0000000000010-12|13-15|";
         return removeWhitespace(ss.str()) == expected;
     }

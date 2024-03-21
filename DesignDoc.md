@@ -72,16 +72,24 @@ quickselect
 ### Time-Complexity Analysis:
 
 **Normal Distribution:**
-O(n) - where n is the number of items in the normal distrobution
+ - Average Case: O(n)
+ - Worst Case: O(n)
+ - Where n is the number of items in the normal distribution
 
 **Uniform Distribution:**
-O(n) - where n is the number of itmes in the uniform distrobution
+ - Average Case: O(n) 
+ - Worst Case: O(n)
+ - Where n is the number of itmes in the uniform distribution
 
 **Almost Generic QuickSort Algorithm:**
-O(n log(n)) - where n is the size of the array to be sorted
+ - Average Case: O(n log(n)) 
+ - Worst Case: O(n^2)
+ - Where n is the size of the array to be sorted
 
 **Almost Generic Find k-th ranked object Algorithm:**
-O(n log(n)) - where n is the size of the array to be searched
+ - Average Case: O(n log(n)) 
+ - Worst Case: O(n^2)
+ - where n is the size of the array to be searched
 
 ### Data Structures, etc:
 

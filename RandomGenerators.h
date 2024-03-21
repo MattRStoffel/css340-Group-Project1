@@ -54,7 +54,7 @@ namespace RandomGenerators {
     }
     
     template<typename T>
-    void printHistogram(std::ostream& os, const std::vector<T>& v, int bins, int binWidth) {
+    void printHistogram(std::ostream& os, const std::vector<T>& v, int bins, int binWidth, char ch) {
         std::vector<int> histogramVec = histogram(v, bins, binWidth);
 
         auto minmax = std::minmax_element(v.begin(), v.end());
@@ -71,7 +71,7 @@ namespace RandomGenerators {
 
         for (int i = 0; i < bins; i++) {
             os << std::setw(6) << min + i * binWidth << " - " << std::setw(6) << min + (i + 1) * binWidth - 1 << " | ";
-            os << std::string(histogramVec[i], '0') << std::endl;
+            os << std::string(histogramVec[i], ch) << std::endl;
         }
     }
 
