@@ -5,6 +5,7 @@
 CMakeFiles
 !CMakeLists.txt
 Makefile
+CMakeLists.txt
 Testing
 main.dSYM/Contents
 *.tcl

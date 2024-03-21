@@ -1,7 +1,5 @@
 //assisted by ChatGPT 4.0
 #include "UnitTests.h"
-#include "RandomGenerators.h"
-#include "Sorting.h"
 
 namespace UNITTESTS {
     // Implement your functions, classes, and variables here
@@ -174,6 +172,9 @@ namespace UNITTESTS {
     bool test_generateRandomIntegers_2() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(100000, 0, 100);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 100, 10, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyNormal(testData, 0.8);
     }
 
@@ -207,7 +208,7 @@ namespace UNITTESTS {
     bool test_printHistogram_1() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
-        RandomGenerators::printHistogram(ss, testData, 4, 3);
+        RandomGenerators::printHistogram(ss, testData, 4, 3, '0');
         std::string expected = "1-3|00000000004-6|000007-9|0000000000010-12|";
         return removeWhitespace(ss.str()) == removeWhitespace(expected);
     }
@@ -215,7 +216,7 @@ namespace UNITTESTS {
     bool test_printHistogram_2() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
-        RandomGenerators::printHistogram(ss, testData, 5, 2);
+        RandomGenerators::printHistogram(ss, testData, 5, 2, '0');
         std::string expected = "1-2|00000000003-4|000005-6|7-8|000009-10|000000";
         return removeWhitespace(ss.str()) == removeWhitespace(expected);
     }
@@ -223,7 +224,7 @@ namespace UNITTESTS {
     bool test_printHistogram_3() {
         std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
         std::stringstream ss;
-        RandomGenerators::printHistogram(ss, testData, 5, 3);
+        RandomGenerators::printHistogram(ss, testData, 5, 3, '0');
         std::string expected = "1-3|00000000004-6|000007-9|0000000000010-12|13-15|";
         return removeWhitespace(ss.str()) == expected;
     }
@@ -238,6 +239,9 @@ namespace UNITTESTS {
     bool test_generateRandomFloats_2() {
         std::vector<float> testData;
         testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 20, 10, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyUniform(testData, 1.8);
     }
 
@@ -249,55 +253,56 @@ namespace UNITTESTS {
 
     // Problem 3: Almost Generic Randomized QuickSort Algorithm
     bool test_partition_1() {
-        return false;
+        return runPartitionTest<int>({10, 7, 8, 9, 1, 5}, [](int a, int b) { return a < b; });
     }
 
     bool test_partition_2() {
-        return false;
+        return runPartitionTest<float>({10.1f, 7.2f, 8.3f, 7.2f, 1.4f, 5.5f}, [](float a, float b) { return a < b; });
+
     }
 
     bool test_partition_3() {
-        return false;
+        return runPartitionTest<int>({2, -3, 5, -1, -3, 2, 8, 2, -1, 4}, [](int a, int b) { return a < b; });
     }
 
     bool test_quickSort_1() {
         std::vector<float> input = {2,3,1,0};
         std::vector<float> expected = {0,1,2,3};
-        return MySortingLibrary::testQuickSort(input, expected);
+        return UNITTESTS::testQuickSort(input, expected);
     }
 
     bool test_quickSort_2() {
         std::vector<int> input = {5, 5, 4, 2, 2};
         std::vector<int> expected = {2, 2, 4, 5, 5};
-        return MySortingLibrary::testQuickSort(input, expected);
+        return UNITTESTS::testQuickSort(input, expected);
     }
 
     bool test_quickSort_3() {
         std::vector<int> input = {1};
         std::vector<int> expected = {1};
-        return MySortingLibrary::testQuickSort(input, expected);
+        return UNITTESTS::testQuickSort(input, expected);
     }
 
     // Problem 4: Almost Generic Randomized QuickSelect Algorithm
     bool test_quickSelect_1() {
         std::vector<int> input = {3,2,1,0};
-        int k = 1;
-        int expected = 1;
-        return false; // MySortingLibrary::testQuickSelect(input, 1, expected);
+        int k = 0;
+        int expected = 0;
+        return UNITTESTS::testQuickSelect(input, k, expected);
     }
 
     bool test_quickSelect_2() {
         std::vector<int> input = {3,2,1,0};
         int k = 1;
         int expected = 1;
-        return false; //MySortingLibrary::testQuickSelect(input, 1, expected);
+        return UNITTESTS::testQuickSelect(input, k, expected);
     }
 
     bool test_quickSelect_3() {
         std::vector<int> input = {3,2,1,0};
-        int k = 1;
-        int expected = 1;
-        return false; // MySortingLibrary::testQuickSelect(input, 1, expected);
+        int k = 2;
+        int expected = 2;
+        return UNITTESTS::testQuickSelect(input, k, expected);
     }
     
 

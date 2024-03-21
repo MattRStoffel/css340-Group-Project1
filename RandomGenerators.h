@@ -25,6 +25,7 @@ namespace RandomGenerators {
 
     template<typename T>
     std::vector<int> histogram(const std::vector<T>& v, int bins, int binWidth) {
+        //check edge cases
         if (bins < 0) {
             throw std::invalid_argument("bins must be greater than 0");
         }
@@ -36,10 +37,12 @@ namespace RandomGenerators {
             throw std::invalid_argument("vector must not be empty");
         }
 
+        //find min and max
         auto minmax = std::minmax_element(v.begin(), v.end());
         T min = *minmax.first;
         T max = *minmax.second;
 
+        //create histogram by calc proper bin width
         std::vector<int> histogram(bins, 0);
 
         for (auto& value : v) {
@@ -54,7 +57,7 @@ namespace RandomGenerators {
     }
     
     template<typename T>
-    void printHistogram(std::ostream& os, const std::vector<T>& v, int bins, int binWidth) {
+    void printHistogram(std::ostream& os, const std::vector<T>& v, int bins, int binWidth, char ch) {
         std::vector<int> histogramVec = histogram(v, bins, binWidth);
 
         auto minmax = std::minmax_element(v.begin(), v.end());
@@ -71,7 +74,7 @@ namespace RandomGenerators {
 
         for (int i = 0; i < bins; i++) {
             os << std::setw(6) << min + i * binWidth << " - " << std::setw(6) << min + (i + 1) * binWidth - 1 << " | ";
-            os << std::string(histogramVec[i], '0') << std::endl;
+            os << std::string(histogramVec[i], ch) << std::endl;
         }
     }
 
