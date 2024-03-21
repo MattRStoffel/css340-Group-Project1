@@ -184,30 +184,48 @@ namespace UNITTESTS {
     }
 
     bool test_calculateHistogram_1() {
-        return false;
+        std::vector<int> testData = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        std::vector<int> histogram = RandomGenerators::histogram(testData, 10, 1);
+        std::vector<int> expected = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        return histogram == expected;
     }
 
     bool test_calculateHistogram_2() {
-        return false;
+        std::vector<int> testData = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        std::vector<int> histogram = RandomGenerators::histogram(testData, 5, 2);
+        std::vector<int> expected = {2, 2, 2, 2, 2};
+        return histogram == expected;
     }
 
     bool test_calculateHistogram_3() {
-        return false;
+        std::vector<int> testData = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        std::vector<int> histogram = RandomGenerators::histogram(testData, 5, 3);
+        std::vector<int> expected = {3, 3, 3, 1, 0};
+        return histogram == expected;
     }
 
     bool test_printHistogram_1() {
-        // std::vector<int> testData;
-        // testData = RandomGenerators::generateRandomNormalDistInts(1000, 10, 30);
-        // RandomGenerators::histogram(std::cout, testData, 10, 10);
-        return false;
+        std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
+        std::stringstream ss;
+        RandomGenerators::printHistogram(ss, testData, 4, 3);
+        std::string expected = "1-3|00000000004-6|000007-9|0000000000010-12|";
+        return removeWhitespace(ss.str()) == removeWhitespace(expected);
     }
 
     bool test_printHistogram_2() {
-        return false;
+        std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
+        std::stringstream ss;
+        RandomGenerators::printHistogram(ss, testData, 5, 2);
+        std::string expected = "1-2|00000000003-4|000005-6|7-8|000009-10|000000";
+        return removeWhitespace(ss.str()) == removeWhitespace(expected);
     }
 
     bool test_printHistogram_3() {
-        return false;
+        std::vector<int> testData = {1,1,1,1,2,2,2,2,2,2,4,4,4,4,4,7,7,7,7,7,9,9,9,9,9,9};
+        std::stringstream ss;
+        RandomGenerators::printHistogram(ss, testData, 5, 3);
+        std::string expected = "1-3|00000000004-6|000007-9|0000000000010-12|13-15|";
+        return removeWhitespace(ss.str()) == expected;
     }
 
     // Problem 2: Generating Histogram for Randomly Generated Floating-Point Numbers
@@ -281,8 +299,16 @@ namespace UNITTESTS {
         int expected = 2;
         return UNITTESTS::testQuickSelect(input, k, expected);
     }
+    
 
-        //function to check if a value is numerical
+    std::string removeWhitespace(const std::string& str) {
+        std::string result;
+        std::copy_if(str.begin(), str.end(), std::back_inserter(result), 
+            [](char c){ return !std::isspace(c); });
+        return result;
+    }
+
+    //function to check if a value is numerical
     template<typename T>
     constexpr bool is_numerical() {
         return std::is_arithmetic<T>::value;

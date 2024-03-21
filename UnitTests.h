@@ -50,6 +50,8 @@ namespace UNITTESTS {
     bool test_quickSelect_2();
     bool test_quickSelect_3();
 
+    std::string removeWhitespace(const std::string& str);
+
     template<typename T>
     constexpr bool is_numerical();
 
