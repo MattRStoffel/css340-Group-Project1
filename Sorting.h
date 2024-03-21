@@ -29,7 +29,7 @@ namespace MySortingLibrary {
         }
         // Swap the pivot element to its correct position
         std::swap(input[i], input[high]);
-        // Return the pivot's final position
+        // Return the low's final position
         return i;
     }
 
