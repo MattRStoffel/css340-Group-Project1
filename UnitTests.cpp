@@ -166,6 +166,9 @@ namespace UNITTESTS {
     bool test_generateRandomIntegers_1() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(20000, 0, 1);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 10, 1, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyNormal(testData, 0.02);
     }
 
@@ -181,6 +184,9 @@ namespace UNITTESTS {
     bool test_generateRandomIntegers_3() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(100000, 100, 1);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 10, 1, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyNormal(testData, 0.6);
     }
 
@@ -233,13 +239,16 @@ namespace UNITTESTS {
     bool test_generateRandomFloats_1() {
         std::vector<float> testData;
         testData = RandomGenerators::generateRandomUniformDistFloats(20000, 10, 100);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 15, 10, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyUniform(testData, 1);
     }
 
     bool test_generateRandomFloats_2() {
         std::vector<float> testData;
-        testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
-        // std::stringstream ss;
+        // testData = RandomGenerators::generateRandomUniformDistFloats(20000, 1, 200);
+        // std::stringstream ss;s
         // RandomGenerators::printHistogram(ss, testData, 20, 10, '0');
         // std::cout << ss.str() << std::endl;
         return isApproximatelyUniform(testData, 1.8);
