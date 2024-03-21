@@ -6,14 +6,14 @@
     - [ ] worst-case time complexity analysis
     - [ ] your choice of data structures with a brief justification in the final coding stage (e.g., "We declared a user-defined struct for ... because ...")
 - [ ] Your program files.  one for each problem.  Each program file will consist of the following information:
-    - [ ] A header file: 
+    - [x] A header file: 
         - [X] the function prototype to generate x uniformly distributed random numbers 
         - [X] the function prototype to generate x random numbers following a specified normal distribution
-        - [ ] the function prototype to calculate the underlying data of a histogram, given a collection of numbers
-        - [ ] the function prototype to print out a histogram using a user-specified symbol (e.g., *)
-        - [ ] the function prototype of the partition subroutine that's shared by the quickSort and k-th ranked  object algorithms
-        - [ ] the function prototype of the almost generic quicksort algorithm
-        - [ ] the function prototype of the almost generic k-th ranked algorithm
+        - [x] the function prototype to calculate the underlying data of a histogram, given a collection of numbers
+        - [/] the function prototype to print out a histogram using a user-specified symbol (e.g., *)
+        - [X] the function prototype of the partition subroutine that's shared by the quickSort and k-th ranked  object algorithms
+        - [X] the function prototype of the almost generic quicksort algorithm
+        - [X] the function prototype of the almost generic k-th ranked algorithm
 - [ ] your CPP file with comments
     - [ ] define the above functions
 - [ ] a header file consisting of your unit tests: 

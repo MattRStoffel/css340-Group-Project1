@@ -97,6 +97,36 @@ namespace UNITTESTS {
         }
     }
 
+    template<typename T>
+    bool runPartitionTest(std::vector<T> input, std::function<bool(T, T)> compare) {
+        int n = input.size();
+        bool allTestsPassed = true;
+        for (int test = 0; test < 3; ++test) {
+            std::vector<T> testInput = input; // Use a copy of the input for each test
+            int pivotIndex = MySortingLibrary::partitionQuickSort(testInput, 0, n-1, compare);
+            T pivotValue = testInput[pivotIndex];
+            // Check elements on the left
+            for (int i = 0; i < pivotIndex; ++i) {
+                if (!compare(testInput[i], pivotValue)) {
+                    allTestsPassed = false;
+                    break;
+                }
+            }
+            // Check elements on the right
+            for (int i = pivotIndex + 1; i < n && allTestsPassed; ++i) {
+                if (compare(testInput[i], pivotValue)) {
+                    allTestsPassed = false;
+                    break;
+                }
+            }
+            if (!allTestsPassed) {
+                return false; // Return false on first failed test
+            }
+        }
+        return true;
+    }
+
+
 } // namespace UNITTESTS
 
 #endif // UNITTESTS_H

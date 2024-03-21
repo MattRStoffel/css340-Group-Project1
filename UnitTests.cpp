@@ -247,15 +247,16 @@ namespace UNITTESTS {
 
     // Problem 3: Almost Generic Randomized QuickSort Algorithm
     bool test_partition_1() {
-        return false;
+        return runPartitionTest<int>({10, 7, 8, 9, 1, 5}, [](int a, int b) { return a < b; });
     }
 
     bool test_partition_2() {
-        return false;
+        return runPartitionTest<float>({10.1f, 7.2f, 8.3f, 7.2f, 1.4f, 5.5f}, [](float a, float b) { return a < b; });
+
     }
 
     bool test_partition_3() {
-        return false;
+        return runPartitionTest<int>({2, -3, 5, -1, -3, 2, 8, 2, -1, 4}, [](int a, int b) { return a < b; });
     }
 
     bool test_quickSort_1() {
