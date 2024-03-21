@@ -79,10 +79,6 @@ namespace UNITTESTS {
         if (input == expected) {
             return true;
         } else {
-            for (const auto& e: expected) std::cout << e << " ";
-            std::cout << "] Got: [";
-            for (const auto& i: input) std::cout << i << " ";
-            std::cout << "])\n";
             return false;
         }
     }
