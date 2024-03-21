@@ -11,13 +11,12 @@ namespace MySortingLibrary {
     // Partition Function for Quick Sort
     template<typename T, typename Func>
     int partitionQuickSort(std::vector<T>& input, int low, int high, Func compare) {
-        // Set new pivot to the highest index in the vector
-        std::random_device rd;  // Will be used to obtain a seed for the random number engine
-        std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
-        std::uniform_int_distribution<> distrib(low, high);
-        int randomPivot = distrib(gen);
-        std::swap(input[randomPivot], input[high]);
-        T pivot = input[high];
+        std::random_device rd;  // Random engine
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> distrib(low, high); // Generates random index in range
+        int randomPivot = distrib(gen); // New pivot
+        std::swap(input[randomPivot], input[high]); // Swap pivot with the highest value in vector
+        T pivot = input[high]; // Set pivot to the last index in the vector
 
         int i = low;
         for (int j = low; j < high; ++j) {
