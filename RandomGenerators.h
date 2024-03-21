@@ -25,6 +25,7 @@ namespace RandomGenerators {
 
     template<typename T>
     std::vector<int> histogram(const std::vector<T>& v, int bins, int binWidth) {
+        //check edge cases
         if (bins < 0) {
             throw std::invalid_argument("bins must be greater than 0");
         }
@@ -36,10 +37,12 @@ namespace RandomGenerators {
             throw std::invalid_argument("vector must not be empty");
         }
 
+        //find min and max
         auto minmax = std::minmax_element(v.begin(), v.end());
         T min = *minmax.first;
         T max = *minmax.second;
 
+        //create histogram by calc proper bin width
         std::vector<int> histogram(bins, 0);
 
         for (auto& value : v) {
