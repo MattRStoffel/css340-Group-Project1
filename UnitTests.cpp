@@ -161,11 +161,13 @@ namespace UNITTESTS {
         return allTestsPassed;
     }
 
-
-    // Problem 1: Generating Histogram for Randomly Generated Integer Numbers
+     // Problem 1: Generating Histogram for Randomly Generated Integer Numbers
     bool test_generateRandomIntegers_1() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(20000, 0, 1);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 10, 1, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyNormal(testData, 0.02);
     }
 
@@ -181,6 +183,9 @@ namespace UNITTESTS {
     bool test_generateRandomIntegers_3() {
         std::vector<int> testData;
         testData = RandomGenerators::generateRandomNormalDistInts(100000, 100, 1);
+        // std::stringstream ss;
+        // RandomGenerators::printHistogram(ss, testData, 10, 1, '0');
+        // std::cout << ss.str() << std::endl;
         return isApproximatelyNormal(testData, 0.6);
     }
 
