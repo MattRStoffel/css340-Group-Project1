@@ -30,6 +30,7 @@ namespace MySortingLibrary {
         return i;
     }
 
+    // Quick Sort
     template<typename T, typename Func>
     void QuickSort(std::vector<T>& input, int low, int high, Func compare) {
         // If the lower value is greater than the upper value, it is sorted
@@ -43,7 +44,7 @@ namespace MySortingLibrary {
         }
     }
 
-    // Helper function to initialize function
+    // Helper function to initialize function (Used for unit tests)
     template<typename T, typename Func = std::less<T>>
     void QuickSort(std::vector<T>& input, Func compare = Func{}) {
         if (!input.empty()) {
@@ -60,20 +61,20 @@ namespace MySortingLibrary {
             throw std::runtime_error("Invalid input in QuickSelect function");
         }
 
-
         // Setting the pivot
         int pivot = partitionQuickSort(input, low, high, compare);
 
+        // Check if pivot is equals our desired value, then we can return it (Base case)
         if (pivot == k) {
             return input[k];
-        } else if (k < pivot) {
+        } else if (k < pivot) { // If desired value is less than the pivot we recurrsively call QuickSelect
             return QuickSelect(input, low, pivot - 1, k, compare);
-        } else {
+        } else { // If desired value is greater than the pivot we recurrsively call QuickSelect
             return QuickSelect(input, pivot + 1, high, k, compare);
         }
     }
 
-    // Helper function to initialize function
+    // Helper function to initialize function (Used for tests)
     template<typename T, typename Func = std::less<T>>
     T QuickSelect(std::vector<T>& input, int k, Func compare = Func{}) {
         if (!input.empty()) {
