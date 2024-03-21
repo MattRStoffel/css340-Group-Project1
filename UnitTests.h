@@ -10,8 +10,10 @@
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
+#include <sstream>
 
 #include "Sorting.h"
+#include "RandomGenerators.h"
 
 namespace UNITTESTS {
     // Declare your functions, classes, and variables here
